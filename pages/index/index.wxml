@@ -1,0 +1,53 @@
+<view class='page'>
+<view class='h2'>我的车位</view>
+
+<view class='list'>
+  <view
+    bindtap='onShareCar'
+    wx:for="{{ownCars}}"
+    wx:key="ownCarKey"
+    class='item item-{{item.status}}'
+    data-status="{{item.status}}"
+    data-index="{{index}}">
+    <image
+      class='item-icon'
+      mode='widthFix'
+      src='{{statusIcon[item.status]}}'></image>
+    <view class='item-content'>
+      <view class='car-title'>{{item.title}}</view>
+      <view class='car-desc'>{{item.desc}}</view>
+    </view>
+  </view>
+</view>
+
+<view class='h2'>别人的车位</view>
+<view class='list' wx:if="{{theirCars.length > 0}}">
+  <view
+    bindtap='onCatch'
+    wx:for="{{theirCars}}"
+    wx:key="ownCarKey"
+    class='item item-{{item.status}}'
+    data-status="{{item.status}}"
+    data-index="{{index}}">
+    <image
+      class='item-icon'
+      mode='widthFix'
+      src='{{statusIcon[item.status]}}'></image>
+    <view class='item-content'>
+      <view class='car-title'>{{item.title}}</view>
+      <view class='car-desc'>{{item.desc}}</view>
+    </view>
+  </view>
+</view>
+<view wx:else class='list'>
+没有数据
+</view>
+
+<view class='search'>
+<button
+  bindtap='onSearch'
+  type='primary'
+  class='search-btn'>搜索车位</button>
+</view>
+
+</view>
